@@ -1,65 +1,71 @@
-Project Title: Simple QR Code Generator (qr_code.ipynb)
-This project provides a straightforward Python script within a Jupyter Notebook environment to generate customized QR codes from user input.
-Project Description
-The qr_code.ipynb notebook takes user-provided data (like a URL or plain text), generates a QR code using the qrcode Python library, and saves it as a PNG image file.
-Getting Started
-Prerequisites
-To run this notebook, you need Python installed, along with pip for package management and the necessary libraries:
-qrcode
-Pillow (PIL Fork, needed by the qrcode library to handle image creation)
-You also need an environment capable of running Jupyter notebooks, such as JupyterLab, Jupyter Notebook classic, or Google Colab.
-Installation
-Clone the repository containing the notebook file to your local machine:
-bash
-git clone github.com
-Use code with caution.
+# QR Code Generator
 
-Navigate into the directory:
-bash
-cd your-repository-name
-Use code with caution.
+A simple Python-based QR code generator that creates custom-styled QR codes from any text or URL input.
 
-Install the required Python packages using pip:
-bash
-pip install qrcode Pillow
-Use code with caution.
+## Features
 
-Usage
-Open the notebook qr_code.ipynb in your preferred Jupyter environment (JupyterLab, classic Notebook, VS Code, etc.).
-Run the cells sequentially.
-Provide input: When prompted in the output cell, enter the data (e.g., a URL like https://example.com/ or plain text) you wish to encode.
-View the output: A new image file named MyQRCode2.png will be saved in the same directory as your notebook file.
-Code Description
-The notebook contains the following core Python logic:
-python
-import qrcode
+- Generate QR codes from any text or URL
+- Custom color styling (red fill on white background)
+- Easy-to-use command-line interface
+- Saves output as PNG image
+- Configurable QR code parameters
 
-data = input("enter the data you want to generate qr for:")
+## Requirements
 
-# Initialize the QR code generator with specific settings
-qr = qrcode.QRCode(version = 1,      # Controls the size (1 is smallest, 40 is largest)
-                   box_size = 10,    # How many pixels each "box" or black dot is
-                   border = 5)       # How many box widths thick the border is
+- Python 3.x
+- qrcode library
 
-# Add the user data to the QR object
-qr.add_data(data)
+## Installation
 
-# Compile the data into the structure
-qr.make(fit = True)
+Install the required library using pip:
 
-# Create the actual image with custom colors
-img = qr.make_image(fill_color = 'red',
-                    back_color = 'white')
+```bash
+pip install qrcode[pil]
+```
 
-# Save the resulting image file
-img.save('MyQRCode2.png')
-Use code with caution.
+## Usage
 
-Built With
-Python - The programming language used.
-qrcode Library - Handles the QR code generation logic.
-Pillow (PIL Fork) - Handles image manipulation and saving.
-License
-This project is open source and available under the MIT License.
-Acknowledgments
-Thanks to the developers of the qrcode and Pillow Python libraries.
+1. Run the script:
+```bash
+python qr_code.py
+```
+
+2. Enter the data you want to encode when prompted:
+```
+enter the data you want to generate qr for: google.com
+```
+
+3. The QR code will be saved as `MyQRCode2.png` in the current directory
+
+## Configuration
+
+You can customize the QR code by modifying these parameters:
+
+- **version**: Controls the size (1-40, where 1 is 21x21 modules)
+- **box_size**: Size of each box in pixels (default: 10)
+- **border**: Border thickness in boxes (default: 5)
+- **fill_color**: QR code color (default: 'red')
+- **back_color**: Background color (default: 'white')
+
+## Example
+
+Input: `https://www.google.com`
+
+Output: A red and white QR code saved as `MyQRCode2.png`
+
+## Use Cases
+
+- Share website URLs
+- Encode contact information
+- Generate WiFi connection codes
+- Create product labels
+- Event ticketing
+- Business cards
+
+## Contributing
+
+Feel free to fork this project and submit pull requests for any improvements.
+
+## License
+
+This project is open source and available for personal and commercial use.
